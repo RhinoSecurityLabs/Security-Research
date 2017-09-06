@@ -1,6 +1,7 @@
-Rhino Security Labs, Inc.
-www.RhinoSecurityLabs.com    |    info@rhinosecuritylabs.com
-(888) 944-8679    |    1200 East Pike Street, Suite 510, Seattle, WA 98115 
+Rhino Security Labs, Inc. | 
+www.RhinoSecurityLabs.com | 
+info@rhinosecuritylabs.com | 
+(888) 944-8679
      
 /*******************************************************************************************************/
 
