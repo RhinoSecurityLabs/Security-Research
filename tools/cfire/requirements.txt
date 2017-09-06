@@ -1,0 +1,7 @@
+argparse
+requests
+dnspython
+dnslib
+netaddr
+sqlite3
+ssdeep
