@@ -5,7 +5,7 @@
 #
 # Rhino Security Labs //@hxmonsegur
 
-# This list is aggregated from CloudFlare:
+# This list is aggregated from Cloudflare:
 # IPv4: https://www.cloudflare.com/ips-v4
 # IPv6: https://www.cloudflare.com/ips-v6
 CF_RANGES = ['103.21.244.0/22',

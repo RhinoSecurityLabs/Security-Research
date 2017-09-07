@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# cFire.py:    [c]loud[F]lare [ire] - IP discovery for domains behind CloudFlare
+# cFire.py:    [c]loud[F]lare [ire] - IP discovery for domains behind Cloudflare
 # =============================================================================
 # This program utilizes several known methods for the discovery of IPs behind
-# the popular CloudFlare WAF. It should be noted, that some of these methods
+# the popular Cloudflare WAF. It should be noted, that some of these methods
 # may result in false positives. Researchers should confirm the results before
 # moving forward. For educational purposes only.
 #
@@ -40,7 +40,7 @@ from lib.cron import cflareupdate
 from lib.Sublist3r import sublist3r
 
 # Import Cloudflare network ranges
-from lib.cloudflare import ranges
+from lib.Cloudflare import ranges
 
 # Use subbrute for DNS bruteforcing
 from lib.subbrute import subbrute
@@ -121,7 +121,7 @@ def clean_uri(targets):
 
 
 def check_cf_ranges(IP):
-    # Confirms if provide IP lives within CloudFlare range from CF_RANGES
+    # Confirms if provide IP lives within Cloudflare range from CF_RANGES
     # Not entirely accurate, make sure to confirm results.
     for CIDR in ranges.CF_RANGES:
         if netaddr.IPAddress(IP) in netaddr.IPNetwork(CIDR):
@@ -215,9 +215,9 @@ def crimeflare_db_lookup(target, cfdbpath, logpath=False):
         printlog("[-] Could not resolve domain: {}".format(target), logpath)
     else:
         if check_cf_ranges(TARGET):
-            printlog("[*] {} ({}) is hosted on CloudFlare network".format(target, TARGET), logpath)
+            printlog("[*] {} ({}) is hosted on Cloudflare network".format(target, TARGET), logpath)
         else:
-            printlog("[!] {} ({}) is NOT hosted on CloudFlare network.".format(target, TARGET), logpath)
+            printlog("[!] {} ({}) is NOT hosted on Cloudflare network.".format(target, TARGET), logpath)
             if not _foundips.__contains__(TARGET):
                 _foundips.append(TARGET)
     _results = query_crimeflare_database(cfdbpath, domain=target)
@@ -290,7 +290,7 @@ def main():
         # Configure argument parser
         parser = argparse.ArgumentParser(
             prog='cfire.py',
-            description='IP discovery tool for domains behind CloudFlare',
+            description='IP discovery tool for domains behind Cloudflare',
             epilog='For educational purposes only. @hxmonsegur//RSL',
             formatter_class=argparse.ArgumentDefaultsHelpFormatter)
         parser.add_argument('-t', '--target', help='Target')
