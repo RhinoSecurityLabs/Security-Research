@@ -8,7 +8,7 @@ info@rhinosecuritylabs.com |
 CloudFire
 =========
 
-This project focuses on discovering potential IP's leaking from behind cloud-proxied services, e.g. CloudFlare. Although there are many ways to tackle this task, we are focusing right now on CrimeFlare database lookups, search engine scraping and other enumeration techniques.
+This project focuses on discovering potential IP's leaking from behind cloud-proxied services, e.g. Cloudflare. Although there are many ways to tackle this task, we are focusing right now on CrimeFlare database lookups, search engine scraping and other enumeration techniques.
 
 Eventually, as the project grows, it will become more modular and much more sophisticated in usage. 
 
