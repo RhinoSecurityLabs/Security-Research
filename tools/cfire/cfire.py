@@ -40,7 +40,7 @@ from lib.cron import cflareupdate
 from lib.Sublist3r import sublist3r
 
 # Import Cloudflare network ranges
-from lib.Cloudflare import ranges
+from lib.cloudflare import ranges
 
 # Use subbrute for DNS bruteforcing
 from lib.subbrute import subbrute
