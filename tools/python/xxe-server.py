@@ -20,6 +20,7 @@ import SocketServer
 from threading import Thread
 from time import sleep
 import logging
+from sys import argv
 
 
 logging.basicConfig(filename='server-xxe-ftp.log',level=logging.DEBUG)
