@@ -28,6 +28,7 @@
 # Rhino Security Labs //@hxmonsegur
 
 # Standard libs
+from __future__ import print_function
 import sys
 import os
 import stat
@@ -277,13 +278,13 @@ def ssdeepcompare(target, IP):
     try:
         ss_target = requests.get('http://{}/'.format(target))
         ssdeep_target_fuzz = ssdeep.hash(ss_target.text)
-        print target, ssdeep_target_fuzz
+        print(target, ssdeep_target_fuzz)
         content = requests.get('https://{}'.format(IP), verify=False, timeout = 5, headers = {'Host': target})
         ssdeep_fuzz = ssdeep.hash(content.text)
-        print IP, ssdeep_fuzz
-        print "ssdeep score for", IP, "is", ssdeep.compare(ssdeep_target_fuzz, ssdeep_fuzz)
+        print(IP, ssdeep_fuzz)
+        print("ssdeep score for", IP, "is", ssdeep.compare(ssdeep_target_fuzz, ssdeep_fuzz))
     except(requests.exceptions.ConnectionError):
-        print "cant connect to", IP
+        print("cant connect to", IP)
 
 def main():
     try:

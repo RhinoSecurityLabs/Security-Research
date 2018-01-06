@@ -8,6 +8,7 @@
 # @hxmonsegur//RSL
 
 # Standard libs
+from __future__ import print_function
 import sys
 import os
 import shutil
@@ -141,15 +142,15 @@ def analyzedoc(infile):
                     print("[+] word/_rels/settings.xml.rels discovered.")
                     with arc.open('word/_rels/settings.xml.rels') as fr:
                         doc = xmltodict.parse(fr.read())
-                    if doc.has_key('Relationships'):
-                        if doc['Relationships']['Relationship'].has_key('@Id'):
+                    if 'Relationships' in doc:
+                        if '@Id' in doc['Relationships']['Relationship']:
                             if doc['Relationships']['Relationship']['@Id'] == 'rId1337':
                                 print("[!] Phishery injection confirmed.")
                                 tURL = doc['Relationships']['Relationship']['@Target']
                                 print("[!] Target URL: {}".format(tURL))
                             else:
                                 print("[!] Relationship discovered is {}".format(doc['Relationships']['Relationship']['@Id']))
-                                if doc['Relationships']['Relationship'].has_key('@Target'):
+                                if '@Target' in doc['Relationships']['Relationship']:
                                     tURL = doc['Relationships']['Relationship']['@Target']
                                     print("[!] Target URL: {}".format(tURL))
                             return True

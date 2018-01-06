@@ -26,6 +26,7 @@
 # Rhino Security Labs //hxm
 
 # For use in making requests
+from __future__ import print_function
 import requests
 
 # For handling command line arguments and parsing

