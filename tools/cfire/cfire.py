@@ -260,6 +260,7 @@ def crimeflare_db_lookup(target, cfdbpath, logpath=False):
         #                 print('Domain: {}   IP: {}  When: {}    Nameservers:    {}  Country:    {}'.format(_domain, _ip, _created, _nameservers, _country))
 
 def sublister_engine_query(domain, cfdbpath, timeout, logpath=False):
+    global args
     print("[*] Starting search engine scan")
     try:
         eresults = sublist3r.main(domain, 8, False, False, True, False, False, None)
