@@ -296,7 +296,7 @@ def main():
         parser.add_argument('-t', '--target', help='Target')
         parser.add_argument('-f', '--targets', help='File containing targets list')
         parser.add_argument('-u', '--update', help='Update CrimeFlare database', action='store_true')
-        parser.add_argument('-d', '--updatehost', help='Host serving CrimeFlare files', default='http://crimeflare.net:82/domains')
+        parser.add_argument('-d', '--updatehost', help='Host serving CrimeFlare files', default='http://crimeflare.net:83/domains')
         parser.add_argument('-p', '--cfdbpath', help='Path to cfdb directory', default='cfdb')
         parser.add_argument('-i', '--timeout', help='Set timeout between bulk search engine scans', default=1)
         # parser.add_argument('-b', '--brute', help='Activate brute force module', action='store_true')
